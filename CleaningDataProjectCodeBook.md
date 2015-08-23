@@ -19,12 +19,19 @@ Subjects are numeric values identifying subjects from the test and train files
 
 Activities are the text values converted from the code values in the raw files.   The code values were converted as follows:
 
-1 WALKING
-2 WALKING_UPSTAIRS
-3 WALKING_DOWNSTAIRS
-4 SITTING
-5 STANDING
-6 LAYING 
+1->WALKING
+
+2->WALKING_UPSTAIRS
+
+3->WALKING_DOWNSTAIRS
+
+4->SITTING
+
+5->STANDING
+
+6->LAYING 
+
+
 
 ## Variables
 
