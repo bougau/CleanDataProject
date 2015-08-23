@@ -79,3 +79,16 @@ gds <- ds %>% group_by(Subject, Activity) %>% summarise_each(funs(mean))
 ```{r}
 write_table(gds, file = "CleaningDataProject.txt", row.name=FALSE)
 ```
+
+## Script Variables
+
+* subjects: data table containing the combined test and train list of subjects
+
+* X: data set containing the combined test and train readings
+
+* Y: data set containing the combined test and train activities
+
+* ds: data set containing the combined subject, activity and readings for means and standard deviations
+
+* gds: data set grouped subject activities and the means of the readings for each.
+

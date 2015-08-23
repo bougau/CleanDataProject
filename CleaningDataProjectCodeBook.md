@@ -1,30 +1,31 @@
-# Cleaning Data Project
+# Cleaning Data Project Data Set
 
-Author:   BouGau
-Date:     August 22, 2015
+Author:		BouGau
+Date:		August 22, 2015
+File: 		CleaningDataProject.txt
 
-## Project Instructions
+## Data Set Description
 
-This document describes the steps and variables used to complete the Course Project for the Getting and Cleaning Data Course from Johns Hopkins.
+The source of this tidy data set was downloaded from https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Dataset.zip 
+and manipulated to combine test and train data, subjects, activity values and grouped to extract the mean of readings by subject and activity.
 
-The course instructions were to createone R script called run_analysis.R that does the following:
-  
-1. Merges the training and the test sets to create one data set.
-2. Extracts only the measurements on the mean and standard deviation for each measurement. 
-3. Uses descriptive activity names to name the activities in the data set
-4. Appropriately labels the data set with descriptive variable names.
-5. From the data set in step 4, creates a second, independent tidy data set with the average of each variable for each activity and each subject.
+## Variables
 
+## Subjects
 
-## Script Variables
+Subjects are numeric values identifying subjects from the test and train files
 
-* subjects: data table containing the combined test and train list of subjects
+## Activities
 
-* X: data set containing the combined test and train readings
+Activities are the text values converted from the code values in the raw files.   The code values were converted as follows:
 
-* Y: data set containing the combined test and train activities
+1 WALKING
+2 WALKING_UPSTAIRS
+3 WALKING_DOWNSTAIRS
+4 SITTING
+5 STANDING
+6 LAYING 
 
-* ds: data set containing the combined subject, activity and readings for means and standard deviations
+## Variables
 
-* gds: data set grouped subject activities and the means of the readings for each.
-
+Readings from the raw files (X files) were filtered to extract only readings with "-mean" and "-std" in the name.  The resulting readings are means of the filtered readings grouped by subject and activities. 
