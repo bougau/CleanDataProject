@@ -17,7 +17,7 @@ The course instructions were to createone R script called run_analysis.R that do
 
 ## Tidy Script Steps
 
-1. Merge the test and train files containing the list of subjects
+* Merge the test and train files containing the list of subjects
 
 ```{r}
 subject_test_file <- "./UCI-HAR-Dataset/test/subject_test.txt"
@@ -27,7 +27,7 @@ subject_train <- read.table(subject_train_file)
 subjects <- rbind(subject_test, subject_train)
 ```
 
-2. Merge the test and train files containing the readings (X)
+* Merge the test and train files containing the readings (X)
 ```{r}
 X_test_file <- "./UCI-HAR-Dataset/test/X_test.txt"
 X_test <- read.table(X_test_file)
@@ -36,7 +36,7 @@ X_train <- read.table(X_train_file)
 X <- rbind(X_test, X_train)
 ```
 
-3. Merge the test and train files containing the activity codes (Y)
+* Merge the test and train files containing the activity codes (Y)
 ```{r}
 Y_test_file <- "./UCI-HAR-Dataset/test/y_test.txt"
 Y_test <- read.table(Y_test_file)
@@ -45,13 +45,13 @@ Y_train <- read.table(Y_train_file)
 Y <- rbind(Y_test, Y_train)
 ```
 
-4. Convert the activity codes to the text labels
+* Convert the activity codes to the text labels
 ```{r}
 Y$activity <-ifelse(Y$V1 == 1, "WALKING", ifelse(Y$V1 == 2, "WALKING_UPSTAIRS", ifelse(Y$V1 == 3, "WALKING_DOWNSTAIRS", ifelse(Y$V1 == 4, "SITTING", ifelse(Y$V1 == 5, "STANDING", ifelse(Y$V1 == 6, "LAYING", "UNKNOWN"))))))
 activities <- Y$activity
 ```
 
-5. Get the column headings for the readings from the features file and update readings data table
+* Get the column headings for the readings from the features file and update readings data table
 ```{r}
 features_file <- "./UCI-HAR-Dataset/features.txt"
 features <- read.table(features_file)
@@ -59,23 +59,23 @@ features <- features[,2]
 colnames(X) <- features
 ```
 
-6. Combine the into the data set the Subject, Activity and the readings variables  that include the text "-mean" or "-std" for mean and standard deviation.
+* Combine the into the data set the Subject, Activity and the readings variables  that include the text "-mean" or "-std" for mean and standard deviation.
 
 ```{r}
 ds <- cbind("Subject"=subjects[,1],"Activity"=Y$activity,X[,grepl("(-mean)|(-std)", names(X))])
 ```
 
-7. Sort the data set by subject and activity
+* Sort the data set by subject and activity
 ```{r}
 ds <- arrange(ds, Subject, Activity)
 ```
 
-8. Group the data set by subject and activity and keep the mean for each group.
+* Group the data set by subject and activity and keep the mean for each group.
 ```{r}
 gds <- ds %>% group_by(Subject, Activity) %>% summarise_each(funs(mean))
 ```
 
-9. Output grouped data set to txt file.
+* Output grouped data set to txt file.
 ```{r}
 write_table(gds, file = "CleaningDataProject.txt", row.name=FALSE)
 ```
